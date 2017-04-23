@@ -32,6 +32,13 @@ body {
     padding-bottom: 60px;
 }
 
+#csv-download {
+  position: absolute;
+  right:10px;
+  top:10px;
+  z-index:3000;
+}
+
 .item {
     padding: 10px;
     background-color: #eee;
