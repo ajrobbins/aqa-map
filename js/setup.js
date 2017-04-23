@@ -74,3 +74,8 @@ app.map.on('draw:created', function (e) {
   var layer = e.layer;
   console.log('draw created:', e);
 });
+
+//Download CSV with the data on click
+$("#csv-download").click(function() {
+    window.location = 'data.csv';
+});
