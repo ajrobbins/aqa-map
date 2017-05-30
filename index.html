@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <!-- CSS Imports -->
-    <link rel="stylesheet" href="https://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.css" />
     <link rel="stylesheet" href="css/reset.css" />
@@ -34,7 +34,27 @@
         <ul id="project-list" class="list-group">
         </ul>
       </div>
+      <div class="selector-1">
+        <div class="toggle-label-1"><p>west</p></div>
+        <div class="toggle">
+          <label class="switch">
+          <input type="checkbox" id="checkbox-1">
+          <div class="slider round"></div>
+        </div>
+        <div class="toggle-label-2"<p>state</p></div>
+      </div>
+      <div class="selector-2">
+        <div class="toggle-label-1"><p>suicide</p></div>
+        <div class="toggle">
+          <label class="switch">
+          <input type="checkbox" id="checkbox2">
+          <div class="slider round"></div>
+        </div>
+        <div class="toggle-label-2"<p>kidnapping</p></div>
+      </div>
+</label>
     </div>
+
     <div id="csv-download">
       <button type="button" class="btn btn-info">Download CSV</button>
     </div>
@@ -45,7 +65,7 @@
     <!-- Javascript Imports -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script>
     <script src="js/setup.js"></script>
   </body>

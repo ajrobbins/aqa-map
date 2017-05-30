@@ -23,7 +23,7 @@ var geojsonMarkerOptions = {
     fillOpacity: 0.8
 };
 
-app.geojsonClient.execute("SELECT * FROM geom_data") // 'LIMIT' should be added to the end of this line
+app.geojsonClient.execute("SELECT * FROM geom_data_js_v2") // 'LIMIT' should be added to the end of this line
   .done(function(data) {
     L.geoJson(data, {
       onEachFeature: function(feature, layer) {
@@ -78,4 +78,17 @@ app.map.on('draw:created', function (e) {
 //Download CSV with the data on click
 $("#csv-download").click(function() {
     window.location = 'data.csv';
+});
+
+//Change data displayed when toggles are moved
+$('#checkbox-1').change(function() {
+  if($(this).is(":checked")) {
+    console.log("checked");
+  }
+});
+
+$('#checkbox-1').click(function() {
+  if (!$(this).is(':checked')) {
+    console.log("unchecked");
+  }
 });
