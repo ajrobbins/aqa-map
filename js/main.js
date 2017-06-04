@@ -24,6 +24,35 @@ cartodb.createLayer(map, {
 .addTo(map)
 .done(function(layer) {
   cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['iyear', 'imonth', 'iday', 'gname', 'city', 'weaptype1_txt', 'nkill']);
+  layer.setInteraction(true);
+
+  //Filter by wtarg when toggle is unchecked
+  $('#checkbox-1').click(function() {
+    if (!$(this).is(':checked')) {
+      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE wtarg = 1');
+    }
+  });
+
+  //Filter by statetarg when toggle is checked
+  $('#checkbox-1').change(function() {
+    if($(this).is(":checked")) {
+      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE statetarg = 1');
+    }
+  });
+
+  //Filter by kidnapping when second toggle is checked
+  $('#checkbox2').change(function() {
+    if($(this).is(":checked")) {
+      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE hostinv = 1');
+    }
+  });
+
+//Filter by suicide when second toggle is unchecked
+  $('#checkbox2').click(function() {
+    if (!$(this).is(':checked')) {
+      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE suicide = 1');
+    }
+  });
 });
 
 //Download CSV with the data on click
@@ -31,15 +60,4 @@ $("#csv-download").click(function() {
     window.location = 'data.csv';
 });
 
-//Change data displayed when toggles are moved
-$('#checkbox-1').change(function() {
-  if($(this).is(":checked")) {
-    console.log("checked");
-  }
-});
-
-$('#checkbox-1').click(function() {
-  if (!$(this).is(':checked')) {
-    console.log("unchecked");
-  }
-});
+// TODO: "show all button, draw polygon and filter, add time slider, format infowindow, format toggles"
