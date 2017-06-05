@@ -20,7 +20,7 @@ cartodb.createLayer(map, {
    cartocss: '#geom_data_js_v2 {marker-fill: #ff7800; }',
    interactivity: 'iyear, imonth, iday, gname, city, weaptype1_txt, nkill'
   }]
-})
+}, { https: true })
 .addTo(map)
 .done(function(layer) {
   cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['iyear', 'imonth', 'iday', 'gname', 'city', 'weaptype1_txt', 'nkill']);
