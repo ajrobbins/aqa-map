@@ -15,6 +15,7 @@ var Stamen_TonerLite = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fast
 cartodb.createLayer(map, {
   user_name: 'arobbins',
   type: 'cartodb',
+  protocol:'https',
   sublayers: [{
    sql: 'select * from geom_data_js_v2',
    cartocss: '#geom_data_js_v2 {marker-fill: #ff7800; }',
