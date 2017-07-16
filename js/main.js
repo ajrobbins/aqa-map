@@ -18,7 +18,7 @@ cartodb.createLayer(map, {
   protocol:'https',
   sublayers: [{
    sql: 'select * from geom_data_js_v2',
-   cartocss: '#geom_data_js_v2 {marker-fill: #ff7800; }',
+   cartocss: '#aqa_data {marker-fill: #ff7800;} #kidnapping [hostinv=1]{marker-fill: #e52933;} #suicide [suicide=1]{marker-fill: #3d2885;} #west [wtarg=1] {marker-fill: #7462c9;} #state [statetarg=1] {marker-fill: #660066;}',
    interactivity: 'iyear, imonth, iday, gname, city, weaptype1_txt, nkill'
   }]
 }, { https: true })
@@ -27,33 +27,47 @@ cartodb.createLayer(map, {
   cdb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['iyear', 'imonth', 'iday', 'gname', 'city', 'weaptype1_txt', 'nkill']);
   layer.setInteraction(true);
 
-  //Filter by wtarg when toggle is unchecked
-  $('#checkbox-1').click(function() {
+$('#checkbox-1').click(function() {
+   if (!$(this).is(':checked')) {
+    layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2');
+  }
+ });
+
+ //Filter by kidnapping when toggle is selected
+ $('#checkbox-2').click(function() {
+   if($(this).is(":checked")) {
+     layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE hostinv = 1');
+   }
+ });
+
+ //Filter by suicide when second toggle is unchecked
+ $('#checkbox-3').click(function() {
+   if (!$(this).is(':checked')) {
+     layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE suicide = 1');
+   }
+ });
+
+ $('#checkbox-4').click(function() {
+    if (!$(this).is(':checked')) {
+     layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2');
+   }
+  });
+
+  //Filter by wtarg when toggle is selected
+  $('#checkbox-5').click(function() {
     if (!$(this).is(':checked')) {
       layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE wtarg = 1');
     }
   });
 
-  //Filter by statetarg when toggle is checked
-  $('#checkbox-1').change(function() {
+  //Filter by statetarg when toggle is selected
+  $('#checkbox-6').click(function() {
     if($(this).is(":checked")) {
+      console.log("checked");
       layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE statetarg = 1');
     }
   });
 
-  //Filter by kidnapping when second toggle is checked
-  $('#checkbox2').change(function() {
-    if($(this).is(":checked")) {
-      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE hostinv = 1');
-    }
-  });
-
-//Filter by suicide when second toggle is unchecked
-  $('#checkbox2').click(function() {
-    if (!$(this).is(':checked')) {
-      layer.getSubLayer(0).setSQL('SELECT * FROM geom_data_js_v2 WHERE suicide = 1');
-    }
-  });
 });
 
 //Download CSV with the data on click
